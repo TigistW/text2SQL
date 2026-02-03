@@ -4,7 +4,7 @@ pandas
 openai
 python-dotenv
 langchain 
-pinecone-client 
+pinecone
 llama-index
 llama-index-vector-stores-pinecone 
 weaviate-client
