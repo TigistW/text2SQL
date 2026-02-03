@@ -7,9 +7,8 @@ langchain
 pinecone
 llama-index
 llama-index-vector-stores-pinecone 
-weaviate-client
+weaviate
 llama-index-vector-stores-weaviate 
 llama-index-embeddings-huggingface
-streamlit
 ratelimit
 anthropic
