@@ -79,6 +79,27 @@ source venv/bin/activate   # Windows: venv\Scripts\activate
 ```bash
 pip install -r requirements.txt
 ```
+---
+
+## 🔧 Environment Variables
+
+This project uses a `.env` file in the repository root to configure API keys, model names, and other runtime settings. **Do not commit secrets to version control.**
+
+**Required variables**
+
+- `VECTOR_STORE` — Vector backend (e.g., `pinecone or weaviate`).
+- `EMBED_MODEL` — Embedding model name (e.g., `text-embedding-3-small`).
+- `GPT_MODEL` — LLM model name (e.g., `gpt-4`).
+- `METRIC_FILENAME` — Metrics output file (e.g., `metrics.json`).
+- `CONTEXT_PROMPT_FILE_PATH` — Path to context prompt (e.g., `context_prompt.txt`).
+- `OPENAI_API_KEY` — Your OpenAI API key (keep secret).
+- `PINECONE_API_KEY` — Your Pinecone API key (if using Pinecone).
+- `DB_PATH` — Path to the SQLite DB (e.g., `patient_health_data.db`).
+- `EMBED_BATCH_SIZE` — Embedding batch size (e.g., `10`).
+- `PINECONE_REGION` — Pinecone region (e.g., `us-east-1`).
+- `SCHEMAS_FILE_PATH` — Path to schemas file (e.g., `schemas.txt`).
+- `SYSTEM_PROMPT_FILE` — Path to system prompt (e.g., `system_prompt.txt`).
+
 
 ### 4️⃣ Run the app
 
