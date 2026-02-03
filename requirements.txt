@@ -1,15 +1,15 @@
 streamlit
-numpy ^1.26.4
-pandas ^2.2.1
-openai ^1.14.1
-python-dotenv ^1.0.1
-langchain ^0.1.13
-pinecone-client ^3.2.0
-llama-index ^0.10.23
-llama-index-vector-stores-pinecone ^0.1.4
-weaviate-client >=3.26.2,<4.0.0
-llama-index-vector-stores-weaviate ^0.1.4
-llama-index-embeddings-huggingface ^0.2.0
-streamlit ^1.33.0
-ratelimit ^2.2.1
-anthropic ^0.25.7
+numpy 
+pandas
+openai
+python-dotenv
+langchain 
+pinecone-client 
+llama-index
+llama-index-vector-stores-pinecone 
+weaviate-client
+llama-index-vector-stores-weaviate 
+llama-index-embeddings-huggingface
+streamlit
+ratelimit
+anthropic
