@@ -10,7 +10,7 @@ if os.path.exists(candidate):
 elif os.path.exists(DB_PATH_ENV):
     DB_PATH = DB_PATH_ENV
 else:
-    DB_PATH = DB_PATH_ENV  # fallback; file may not exist
+    DB_PATH = DB_PATH_ENV 
 
 OUT_FILE = os.path.join(project_root, "schemas.txt")
 
@@ -29,6 +29,7 @@ if not rows:
 else:
     with open(OUT_FILE, "w", encoding="utf-8") as f:
         for i, (name, sql) in enumerate(rows):
+            
             # Normalise whitespace and ensure SQL statement ends with semicolon
             stmt = sql.strip()
             if not stmt.endswith(";"):

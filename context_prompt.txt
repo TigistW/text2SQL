@@ -1,0 +1,1 @@
+Default context prompt: Use the patient health database to answer queries and generate SQL. Be concise and prioritize relevant columns.

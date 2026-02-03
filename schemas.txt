@@ -1,0 +1,60 @@
+CREATE TABLE patients (
+        Id TEXT PRIMARY KEY,
+        FIRST TEXT,
+        LAST TEXT,
+        BIRTHDATE TEXT,
+        ETHNICITY TEXT
+    );
+&
+CREATE TABLE conditions (
+        Id TEXT PRIMARY KEY,
+        PATIENT TEXT,
+        DESCRIPTION TEXT,
+        START TEXT,
+        STOP TEXT,
+        FOREIGN KEY(PATIENT) REFERENCES patients(Id)
+    );
+&
+CREATE TABLE medications (
+        Id TEXT PRIMARY KEY,
+        PATIENT TEXT,
+        DESCRIPTION TEXT,
+        BASE_COST REAL,
+        PAYER_COVERAGE REAL,
+        FOREIGN KEY(PATIENT) REFERENCES patients(Id)
+    );
+&
+CREATE TABLE careplans (
+        Id TEXT PRIMARY KEY,
+        PATIENT TEXT,
+        DESCRIPTION TEXT,
+        START TEXT,
+        STOP TEXT,
+        FOREIGN KEY(PATIENT) REFERENCES patients(Id)
+    );
+&
+CREATE TABLE allergies (
+        Id TEXT PRIMARY KEY,
+        PATIENT TEXT,
+        DESCRIPTION TEXT,
+        START TEXT,
+        STOP TEXT,
+        FOREIGN KEY(PATIENT) REFERENCES patients(Id)
+    );
+&
+CREATE TABLE devices (
+        Id TEXT PRIMARY KEY,
+        PATIENT TEXT,
+        DESCRIPTION TEXT,
+        START TEXT,
+        STOP TEXT,
+        FOREIGN KEY(PATIENT) REFERENCES patients(Id)
+    );
+&
+CREATE TABLE immunizations (
+        Id TEXT PRIMARY KEY,
+        PATIENT TEXT,
+        DESCRIPTION TEXT,
+        START TEXT,
+        FOREIGN KEY(PATIENT) REFERENCES patients(Id)
+    );

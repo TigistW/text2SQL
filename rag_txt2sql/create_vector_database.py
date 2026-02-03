@@ -43,62 +43,7 @@ def initialize_vector_store(
     pinecone_config: dict,
     index_name: str = None,
 ) -> WeaviateVectorStore | PineconeVectorStore:
-    """
-    Initializes and returns a vector store instance based on the specified vector store name.
-    Supports the initialization of 'Pinecone' and 'Weaviate' vector stores by configuring
-    them with the given parameters. For Pinecone, it also checks and validates the provided
-    configuration against required settings.
-
-    Parameters:
-    ----------
-    vector_store_name (str): The name of the vector store to initialize. Currently supports 'pinecone' and 'weaviate'.
-
-    pinecone_api_key (str): The API key for Pinecone. Required if 'pinecone' is specified as the vector store.
-
-    pinecone_config (dict): Configuration settings specific to Pinecone, including 'metric', 'dimension', 'cloud',
-    and 'region'. This parameter is mandatory and must be a dictionary when 'pinecone' is the selected vector store.
-
-    index_name (str), optional: The name of the index to be used or created within the vector store. If not provided,
-    defaults to 'SchemaIndex' for Weaviate and 'schema-index' for Pinecone.
-
-    Returns:
-    -------
-    vector_store (WeaviateVectorStore | PineconeVectorStore): An instance of the vector store configured with the
-    provided parameters.
-
-    Raises:
-    ------
-    ValueError
-        If 'pinecone_config' is not specified or is None when 'pinecone' is the vector store.
-        If the Pinecone API key is not provided when 'pinecone' is the vector store.
-        If 'pinecone_config' does not contain all required configurations.
-
-    TypeError
-        If 'pinecone_config' is not a dictionary.
-
-    Notes:
-    -----
-    - The function performs validation checks specifically for the Pinecone configuration
-      to ensure all required parameters are included. It raises errors for
-      missing or invalid configurations.
-    - For Weaviate, the function assumes a local instance running on 'http://localhost:8080'.
-
-    Example:
-    -------
-    ### Initialize a Pinecone vector store
-    pinecone_config = {
-        "metric": "cosine",
-        "dimension": 768,
-        "cloud": "aws",
-        "region": "us-west-1",
-    }
-    vector_store = initialize_vector_store(
-        vector_store_name="pinecone",
-        pinecone_api_key="your_pinecone_api_key",
-        pinecone_config=pinecone_config,
-        index_name="your_index_name"
-    )
-    """
+   
 
     WEAVIATE_HOST = os.environ.get("WEAVIATE_HOST")
 
@@ -169,61 +114,7 @@ def create_database(
     pinecone_config: dict = None,
     index_name: str = None,
 ) -> VectorStoreIndex:
-    """
-    Creates and populates a vector database from a specified file containing data schemas,
-    utilizing either Pinecone or Weaviate as the vector store and OpenAI embeddings for
-    vectorization. The process involves reading the data, generating embeddings, and
-    storing these embeddings in the vector database.
 
-    Parameters:
-    ----------
-    file_path (str): The file system path to the text file containing the data schemas. Each schema
-    should be separated by "&" in the file.
-
-    vector_store_name (str): The name of the vector store to use for storing the embeddings. Supported values
-    are 'pinecone' and 'weaviate'.
-
-    model (str): The model identifier for the OpenAI API to be used for generating embeddings from the text data.
-
-    embed_batch_size (int): The number of documents to process in each batch when generating embeddings.
-
-    pinecone_config (dict), optional: Configuration settings for Pinecone, including 'metric', 'dimension', 'cloud',
-        and 'region'. Required if using Pinecone as the vector store.
-
-    index_name (str), optional: The name of the index to create or use within the vector store. If not specified,
-        defaults to 'SchemaIndex' for Weaviate and 'schema-index' for Pinecone.
-
-    Returns:
-    -------
-    VectorStoreIndex
-        An instance of VectorStoreIndex, which represents the created and populated vector
-        index in the specified vector store.
-
-    Raises:
-    ------
-    ValueError
-        If the vector store name is not supported, if required API keys are not found in
-        environment variables, or if the `pinecone_config` is incomplete or missing when
-        required.
-
-    Notes:
-    -----
-    - The function automatically loads required API keys (PINECONE_API_KEY and OPENAI_API_KEY)
-      from environment variables. Ensure these are set before calling the function.
-    - This function integrates several components: reading data from a file, parsing and
-      processing the data, generating embeddings using OpenAI's API, and storing these
-      embeddings in the specified vector store.
-
-    Example:
-    -------
-    # Create a vector database using Weaviate and OpenAI's text-embedding model
-    create_database(
-        file_path="path/to/data.txt",
-        vector_store_name="weaviate",
-        model="text-embedding-ada-001",
-        embed_batch_size=5
-    )
-    """
 
     if not check_valid_vector_store(vector_store_name):
         raise ValueError(
